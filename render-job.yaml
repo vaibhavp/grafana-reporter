@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: render
+  namespace: monitoring
+spec:
+  template:
+    spec:
+      containers:
+      - name: render
+        image: va15591/render:2.0
+        imagePullPolicy: "Always"
+        envFrom:
+          - configMapRef:
+              name: render-config
+      restartPolicy: Never
+  backoffLimit: 4
+  completions: 1
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: render-config
+   namespace: monitoring
+   labels:
+     app: render
+data:
+  GRAFANA_URL: "http://prom-grafana:80"
+  GRAFANA_USER: "admin"
+  GRAFANA_PASSWORD: "prom-operator"
+  SLACK_TOKEN: "xoxb-573662986324-599506195031-oDP9ZSLQjFzrThZfQVEdgsml"
+  SLACK_CHANNEL: "#kubernetes-bot"
