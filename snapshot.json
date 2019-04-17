@@ -1,0 +1,29 @@
+{
+      "dashboard": {
+        "editable":false,
+        "hideControls":true,
+        "nav":[
+        {
+          "enable":true,
+        "type":"timepicker"
+        }
+        ],
+        "rows": [
+        ],
+        "style":"dark",
+        "tags":[],
+        "templating":{
+          "list":[
+          ]
+        },
+        "time":{ "from": "now-5m",
+            "to": "now",
+            "raw": {"from": "now-5m", "to": "now"}
+        },
+        "timezone":"browser",
+        "title":"Kubernetes / Compute Resources / Cluster",
+        "version":5
+        },
+      "expires": 3600,
+      "name": ""
+    }

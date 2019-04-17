@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: render
+  namespace: monitoring
+spec:
+  template:
+    spec:
+      containers:
+      - name: render
+        image: va15591/render:1.0
+        imagePullPolicy: "Always"
+      restartPolicy: Never
+  backoffLimit: 4
+  completions: 1

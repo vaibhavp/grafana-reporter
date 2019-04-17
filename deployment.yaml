@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: render
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: render
+    spec:
+      containers:
+        - name: vaibhav
+          image: va15591/render:1.0
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 3000
